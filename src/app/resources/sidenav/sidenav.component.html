@@ -1,0 +1,59 @@
+<nav id="sidebar" class="sidebar js-sidebar">
+    <div class="sidebar-content js-simplebar">
+        <a class="sidebar-brand" routerLink="/app/dashboard">
+            <span class="align-middle">{{ "COSOZA" }}</span>
+        </a>
+
+        <ul class="sidebar-nav">
+            <li class="sidebar-header">
+                Home
+            </li>
+
+            <li class="sidebar-item" routerLinkActive="active">
+                <a class="sidebar-link" routerLink="/app/dashboard">
+                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                </a>
+            </li>
+
+            <li class="sidebar-header">
+                Managament
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+                <a class="sidebar-link" routerLink="/app/user-manage">
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">User Managament</span>
+                </a>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+                <a class="sidebar-link" routerLink="/app/user-list">
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">User list</span>
+                </a>
+            </li>
+
+
+            <li class="sidebar-item" routerLinkActive="active">
+                <a class="sidebar-link" routerLink="/app/configuration">
+                    <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Configurations</span>
+                </a>
+            </li>
+
+            <li class="sidebar-header">
+                Reports
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+                <a class="sidebar-link" routerLink="/app/pages-sign-in.html">
+                    <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">Reports</span>
+                </a>
+            </li>
+
+            <li class="sidebar-header">
+                Other
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+                <a class="sidebar-link" routerLink="/app/user_loyalty">
+                    <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Loyalty</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
