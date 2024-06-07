@@ -11,7 +11,7 @@ import { UserLoyaltyComponent } from './pages/user-loyalty/user-loyalty.componen
 import { ConfigurationComponent } from './pages/configuration/configuration.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { PageAddEditComponent } from './page-add-edit/page-add-edit.component';
-import { EmployeeService } from './services/employee.service';
+// import { EmployeeService } from './services/employee.service';
 
 
 
@@ -60,11 +60,11 @@ export const routes: Routes = [
                  
             },
 
-            {
-                path: 'employee',
-                loadComponent: () => EmployeeService,
+            // {
+            //     path: 'employee',
+            //     loadComponent: () => EmployeeService,
                    
-            },
+            // },
             {
                 path: 'user-list',
                 loadComponent: () => UserListComponent,
