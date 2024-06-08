@@ -55,7 +55,7 @@
     font-weight: bold;
 }
 
-input[type="text"],
+/* input[type="text"],
 input[type="email"],
 input[type="password"] {
     width: 90%;
@@ -63,12 +63,12 @@ input[type="password"] {
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 8px;
-}
+} */
 
 
 
 
-button {
+/* button {
     width: 90%;
     background-color: #007bff;
     color: #fff;
@@ -84,4 +84,4 @@ button {
 
 button:hover {
     background-color: #0056b3;
-}
+} */
