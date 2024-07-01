@@ -18,8 +18,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 
+
 @Component({
-  selector: 'app-page-add-edit',
+  selector: 'app-list-add-edit',
   standalone: true,
   imports: [
     MatDialogModule,
@@ -37,15 +38,16 @@ import { MatOption } from '@angular/material/core';
     ReactiveFormsModule,
     MatTableModule,
     MatSelect,
-    MatOption
+    MatOption,
   ],
-  templateUrl: './page-add-edit.component.html',
-  styleUrl: './page-add-edit.component.css',
+  templateUrl: './list-add-edit.component.html',
+  styleUrl: './list-add-edit.component.css'
 })
-export class PageAddEditComponent {
+export class ListAddEditComponent {
   empForm: FormGroup;
 
-  worktype: string[] = ['Video', 'Audio'];
+  licensetype: string[] = ['Radio Station', 'Hotel', 'Restaurant', 'Supermarket', 
+    'Shop', 'Saloon', 'Bus', 'Taxi Operator', 'Car Hire Operator', 'Other'];
 
   constructor(private _fb: FormBuilder) {
     this.empForm = this._fb.group({
@@ -54,8 +56,8 @@ export class PageAddEditComponent {
       email: '',
       dob: '',
       gender: '',
-      worktype: '',
-      worktitle: '',
+      licensetype: '',
+      deviceused: '',
       reg_no: '',
       address: '',
     });
@@ -66,4 +68,5 @@ export class PageAddEditComponent {
       console.log(this.empForm.value);
     }
   }
+
 }

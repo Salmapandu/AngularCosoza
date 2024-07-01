@@ -11,7 +11,9 @@ import { UserLoyaltyComponent } from './pages/user-loyalty/user-loyalty.componen
 import { ConfigurationComponent } from './pages/configuration/configuration.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { PageAddEditComponent } from './page-add-edit/page-add-edit.component';
-// import { EmployeeService } from './services/employee.service';
+import { ListAddEditComponent } from './list-add-edit/list-add-edit.component';
+
+
 
 
 
@@ -60,22 +62,26 @@ export const routes: Routes = [
                  
             },
 
-            // {
-            //     path: 'employee',
-            //     loadComponent: () => EmployeeService,
-                   
-            // },
+        
             {
                 path: 'user-list',
                 loadComponent: () => UserListComponent,
+                children:[
+                    {
+                        path: '',
+                        redirectTo: 'list-add-edit',
+                        pathMatch: 'full'
+                    },
+                ]
+                
             },
 
             {
-                path: 'user_loyalty',
-                loadComponent: () => UserLoyaltyComponent,
-                
-              
+                path: 'list-add-edit',
+                loadComponent: () => ListAddEditComponent,
             },
+
+
            
             {
                 path: 'configuration',

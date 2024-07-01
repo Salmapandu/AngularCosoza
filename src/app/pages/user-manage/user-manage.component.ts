@@ -23,6 +23,8 @@ import { MatCell } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatInput } from '@angular/material/input';
 import { MatCellDef } from '@angular/material/table';
+import { MatSortHeader } from '@angular/material/sort';
+import { MatIcon } from '@angular/material/icon';
 
 
 @Component({
@@ -35,7 +37,8 @@ import { MatCellDef } from '@angular/material/table';
     ReactiveFormsModule,MatColumnDef,
     MatIconButton,MatHeaderCell,MatHeaderCellDef,
     MatHeaderRow, MatHeaderRowDef,MatNoDataRow,
-    MatRow,MatCell,MatInputModule,MatInput,MatCellDef,],
+    MatRow,MatCell,MatInputModule,MatInput,
+    MatCellDef,MatSortHeader,MatIcon,],
   templateUrl: './user-manage.component.html',
   styleUrl: './user-manage.component.css'
 })
@@ -43,7 +46,7 @@ export class UserManageComponent   {
 
   displayedColumns: string[] = [
     's/n', 
-    'fullName',
+    'firstName',
      'lastName',
       'email',
       'dob', 
