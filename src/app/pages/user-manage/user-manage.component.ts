@@ -103,6 +103,7 @@ export class UserManageComponent implements OnInit, OnDestroy {
       },
     });
   }
+  
   getArtists(): void {
     this.artistSub = this.artistService.getArtists().subscribe({
       next: (res) => {

@@ -1,22 +1,18 @@
-import { Component } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule, MatOption, MatOptionModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
-import { MatLabel } from '@angular/material/form-field';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { DialogRef } from '@angular/cdk/dialog';
+import { MatSelect, MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
-import { MatSelect } from '@angular/material/select';
-import { MatOption } from '@angular/material/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { ToastrService } from 'ngx-toastr';
+import { ArtistService } from '../services/artist/artist.service';
 
 @Component({
   selector: 'app-page-add-edit',
@@ -42,12 +38,14 @@ import { MatOption } from '@angular/material/core';
   templateUrl: './page-add-edit.component.html',
   styleUrl: './page-add-edit.component.css',
 })
-export class PageAddEditComponent {
+export class PageAddEditComponent implements OnInit {
   empForm: FormGroup;
 
   worktype: string[] = ['Video', 'Audio'];
 
-  constructor(private _fb: FormBuilder) {
+  private artistService = inject(ArtistService);
+
+  constructor(private _fb: FormBuilder, private toastr: ToastrService, private dialog: MatDialog) {
     this.empForm = this._fb.group({
       firstName: '',
       lastName: '',
@@ -61,9 +59,23 @@ export class PageAddEditComponent {
     });
   }
 
+
   onFormSubmit() {
     if (this.empForm.valid) {
-      console.log(this.empForm.value);
+      this.artistService.addArtist(this.empForm.value).subscribe({
+        next: resp => {
+          this.toastr.success('Artist Added Successfully!', 'Success!');
+          this.dialog.closeAll();
+        },
+        error: err => {
+          console.log(err);
+          this.toastr.error('Fail to add artist', 'Error!');
+        }
+      });
     }
+  }
+
+  ngOnInit(): void {
+      
   }
 }
