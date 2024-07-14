@@ -8,8 +8,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortHeader, MatSortModule } from '@angular/material/sort';
-import { MatCellDef, MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { PageAddEditComponent } from '../../page-add-edit/page-add-edit.component';
@@ -31,7 +32,7 @@ import { LicenseeService } from '../../services/licensee/licensee.service';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatCellDef,
+    MatTooltipModule,
     MatSortHeader,
     MatTabsModule,
   ],
@@ -39,9 +40,6 @@ import { LicenseeService } from '../../services/licensee/licensee.service';
   styleUrl: './user-manage.component.css',
 })
 export class UserManageComponent implements OnInit, OnDestroy {
-deleteArtist(_t72: any) {
-throw new Error('Method not implemented.');
-}
   displayedColumns: string[] = [
     's/n',
     // 'firstName',
@@ -73,7 +71,6 @@ throw new Error('Method not implemented.');
   ];
   dataSource!: MatTableDataSource<any>;
   dataSource2!: MatTableDataSource<any>;
-  
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -86,6 +83,19 @@ throw new Error('Method not implemented.');
 
   openAddEditEmpForm() {
     this._dialog.open(PageAddEditComponent);
+  }
+
+  deleteArtist(artistId: any) {
+    this.artistService.deleteArtist(artistId).subscribe({
+      next: (res) => {
+        this.toastr.success('Artist Permanently Deleted', 'Successfully');
+        this.getArtists();
+      },
+      error: (err) => {
+        console.log(err);
+        this.toastr.error('Failed to Delete Artist', 'Error');
+      },
+    });
   }
 
   getArtists(): void {

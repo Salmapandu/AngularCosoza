@@ -118,10 +118,12 @@
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
               <td mat-cell *matCellDef="let row">
                 <button mat-icon-button color="primary">
-                  <mat-icon>edit</mat-icon>
+                  <span class="bi bi-pen"></span>
+                  <!-- <mat-icon>edit</mat-icon> -->
                 </button>
-                <button mat-icon-button color="warn" (click)="deleteArtist(row)">
-                  <mat-icon>delete</mat-icon>
+                <button mat-icon-button color="warn" (click)="deleteArtist(row.artist_id)">
+                  <span class="bi bi-trash3"></span>
+                  <!-- <mat-icon>delete</mat-icon> -->
                 </button>
               </td>
             </ng-container>
