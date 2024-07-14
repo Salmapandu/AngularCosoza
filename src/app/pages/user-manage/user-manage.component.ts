@@ -1,92 +1,122 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatButtonModule} from '@angular/material/button';
-import {PageAddEditComponent} from '../../page-add-edit/page-add-edit.component';
+import { CommonModule } from '@angular/common';
+import { Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
-import {MatTableModule} from '@angular/material/table'; 
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatSort, MatSortModule} from '@angular/material/sort';
-import { MatFormField } from '@angular/material/form-field';
-import { MatLabel } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatColumnDef } from '@angular/material/table';
-import { MatIconButton } from '@angular/material/button';
-import { MatHeaderCell } from '@angular/material/table';
-import { MatHeaderCellDef} from '@angular/material/table';
-import { MatHeaderRow } from '@angular/material/table';
-import { MatHeaderRowDef } from '@angular/material/table';
-import { MatNoDataRow } from '@angular/material/table';
-import { MatRow } from '@angular/material/table';
-import { MatCell } from '@angular/material/table';
+import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatInput } from '@angular/material/input';
-import { MatCellDef } from '@angular/material/table';
-import { MatSortHeader } from '@angular/material/sort';
-import { MatIcon } from '@angular/material/icon';
-
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortHeader, MatSortModule } from '@angular/material/sort';
+import { MatCellDef, MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
+import { PageAddEditComponent } from '../../page-add-edit/page-add-edit.component';
+import { ArtistService } from '../../services/artist/artist.service';
+import { LicenseeService } from '../../services/licensee/licensee.service';
 
 @Component({
   selector: 'app-user-manage',
   standalone: true,
-  imports: [MatIconModule,MatToolbarModule,
-    MatButtonModule,PageAddEditComponent,
-    MatTableModule,MatPaginatorModule,
-    MatSortModule,MatFormField, MatLabel,
-    ReactiveFormsModule,MatColumnDef,
-    MatIconButton,MatHeaderCell,MatHeaderCellDef,
-    MatHeaderRow, MatHeaderRowDef,MatNoDataRow,
-    MatRow,MatCell,MatInputModule,MatInput,
-    MatCellDef,MatSortHeader,MatIcon,],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatLabel,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatCellDef,
+    MatSortHeader,
+    MatTabsModule,
+  ],
   templateUrl: './user-manage.component.html',
-  styleUrl: './user-manage.component.css'
+  styleUrl: './user-manage.component.css',
 })
-export class UserManageComponent   {
-
+export class UserManageComponent implements OnInit, OnDestroy {
+deleteArtist(_t72: any) {
+throw new Error('Method not implemented.');
+}
   displayedColumns: string[] = [
-    's/n', 
+    's/n',
+    // 'firstName',
+    // 'lastName',
+    // 'email',
+    // 'dob',
+    // 'gender',
+    // 'worktype',
+    // 'worktitle',
+    // 'reg_no',
+    'address',
+    'mobile_phone',
+    'action',
+  ];
+
+  displayedColumns2: string[] = [
+    's/n',
     'firstName',
-     'lastName',
-      'email',
-      'dob', 
-      'gender',
-       'worktype',
-        'worktitle',
-        'reg_no',
-       'address',
-        'action', ];
+    'lastName',
+    'email',
+    'dob',
+    'gender',
+    'worktype',
+    'worktitle',
+    'reg_no',
+    'address',
+    // 'mobile_phone',
+    'action',
+  ];
   dataSource!: MatTableDataSource<any>;
+  dataSource2!: MatTableDataSource<any>;
+  
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort
+  @ViewChild(MatSort) sort!: MatSort;
 
+  artistSub?: Subscription;
 
+  constructor(private _dialog: MatDialog, private toastr: ToastrService) {}
+  private artistService = inject(ArtistService);
+  private licenseetService = inject(LicenseeService);
 
-
-
-
-
-
-  constructor(private _dialog: MatDialog) {}
   openAddEditEmpForm() {
     this._dialog.open(PageAddEditComponent);
   }
-  
 
-  
+  getArtists(): void {
+    this.artistSub = this.artistService.getArtists().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.dataSource = new MatTableDataSource(res);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  getLicensees(): void {}
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource!.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+    if (this.dataSource!.paginator) {
+      this.dataSource!.paginator.firstPage();
     }
   }
 
-
-
+  ngOnInit(): void {
+    this.getArtists();
+    this.getLicensees();
   }
- 
 
+  ngOnDestroy(): void {
+    this.artistSub?.unsubscribe();
+  }
+}

@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     artworks: 0,
   }
   userSub?: Subscription;
+  applicationSub?: Subscription;
 
   constructor(private applicationServ: ApplicationService) {}
 
@@ -33,7 +34,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       },
     });
 
-    this.applicationServ.getApplications().subscribe({
+    this.applicationSub = this.applicationServ.getApplications().subscribe({
       next: (res) => {
         this.data.applications = res.length;
       },
@@ -49,6 +50,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.userSub?.unsubscribe();
+    this.applicationSub?.unsubscribe();
   }
 }
 
