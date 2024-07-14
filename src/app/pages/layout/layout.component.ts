@@ -13,4 +13,7 @@ import { FooterComponent } from '../../resources/footer/footer.component';
 })
 export class LayoutComponent {
 
+  constructor() {
+    
+  }
 }
