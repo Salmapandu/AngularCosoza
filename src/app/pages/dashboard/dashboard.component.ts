@@ -14,7 +14,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   data: ISummary = {
     users: 0,
     applications: 0,
-    licenses: 0,
+    licensee: 0,
+    artworks: 0,
   }
   userSub?: Subscription;
 
@@ -54,7 +55,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 interface ISummary {
   users?: number;
   applications?: number;
-  licenses?: number;
+  licensee?: number;
   artworks?: number;
   payments?: number;
 
