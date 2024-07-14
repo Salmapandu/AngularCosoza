@@ -5,6 +5,6 @@ export interface IApplication {
     application_id: number;
     date: string;
     type: string;
-    artist?: IArtist;
-    licensee?: ILicense;
+    artist?: IArtist | any;
+    licensee?: ILicense | any;
 }

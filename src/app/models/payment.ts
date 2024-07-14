@@ -4,5 +4,5 @@ export interface IPayment {
     payment_id: number;
     amount_paid: string;
     date_paid: string;
-    application?: IApplication;
+    application?: IApplication | any;
 }
