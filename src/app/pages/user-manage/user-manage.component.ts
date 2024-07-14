@@ -57,16 +57,8 @@ export class UserManageComponent implements OnInit, OnDestroy {
 
   displayedColumns2: string[] = [
     's/n',
-    'firstName',
-    'lastName',
-    'email',
-    'dob',
-    'gender',
-    'worktype',
-    'worktitle',
-    'reg_no',
     'address',
-    // 'mobile_phone',
+    'mobile_phone',
     'action',
   ];
   dataSource!: MatTableDataSource<any>;
@@ -93,11 +85,24 @@ export class UserManageComponent implements OnInit, OnDestroy {
       },
       error: (err) => {
         console.log(err);
+        // this.getArtists();
         this.toastr.error('Failed to Delete Artist', 'Error');
       },
     });
   }
 
+  deleteLicensee(licenseeId: any) {
+    this.licenseetService.deleteLicensee(licenseeId).subscribe({
+      next: (res) => {
+        this.toastr.success('Licensee Permanently Deleted', 'Successfully');
+        this.getLicensees();
+      },
+      error: (err) => {
+        console.log(err);
+        this.toastr.error('Failed to Delete Licensee', 'Error');
+      },
+    });
+  }
   getArtists(): void {
     this.artistSub = this.artistService.getArtists().subscribe({
       next: (res) => {
@@ -110,7 +115,17 @@ export class UserManageComponent implements OnInit, OnDestroy {
     });
   }
 
-  getLicensees(): void {}
+  getLicensees(): void {
+    this.licenseetService.getLicensees().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.dataSource2 = new MatTableDataSource(res);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

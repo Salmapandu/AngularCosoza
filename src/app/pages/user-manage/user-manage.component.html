@@ -44,7 +44,7 @@
             <!-- ID Column -->
             <ng-container matColumnDef="s/n">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>S/N</th>
-              <td mat-cell *matCellDef="let row;let i = index">{{ i + 1 }}</td>
+              <td mat-cell *matCellDef="let row; let i = index">{{ i + 1 }}</td>
             </ng-container>
 
             <!-- Progress Column -->
@@ -117,11 +117,16 @@
             <ng-container matColumnDef="action">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
               <td mat-cell *matCellDef="let row">
-                <button mat-icon-button color="primary">
+                <button mat-icon-button color="primary" matTooltip="Edit">
                   <span class="bi bi-pen"></span>
                   <!-- <mat-icon>edit</mat-icon> -->
                 </button>
-                <button mat-icon-button color="warn" (click)="deleteArtist(row.artist_id)">
+                <button
+                  mat-icon-button
+                  color="warn"
+                  (click)="deleteArtist(row.artist_id)"
+                  matTooltip="Delete"
+                >
                   <span class="bi bi-trash3"></span>
                   <!-- <mat-icon>delete</mat-icon> -->
                 </button>
@@ -190,62 +195,7 @@
             <!-- ID Column -->
             <ng-container matColumnDef="s/n">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>S/N</th>
-              <td mat-cell *matCellDef="let row">{{ row.sn }}</td>
-            </ng-container>
-
-            <!-- Progress Column -->
-            <ng-container matColumnDef="firstName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                First Name
-              </th>
-              <td mat-cell *matCellDef="let row">{{ row.firstName }}</td>
-            </ng-container>
-            <!-- Progress Column -->
-            <ng-container matColumnDef="lastName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                Last Name
-              </th>
-              <td mat-cell *matCellDef="let row">{{ row.lastName }}</td>
-            </ng-container>
-
-            <!-- Progress Column -->
-            <ng-container matColumnDef="email">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-              <td mat-cell *matCellDef="let row">{{ row.email }}</td>
-            </ng-container>
-
-            <!-- Progress Column -->
-            <ng-container matColumnDef="dob">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>dob</th>
-              <td mat-cell *matCellDef="let row">{{ row.dob }}</td>
-            </ng-container>
-
-            <!-- Progress Column -->
-            <ng-container matColumnDef="gender">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
-              <td mat-cell *matCellDef="let row">{{ row.gender }}</td>
-            </ng-container>
-
-            <!-- Progress Column -->
-            <ng-container matColumnDef="worktype">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                Work Type
-              </th>
-              <td mat-cell *matCellDef="let row">{{ row.worktype }}</td>
-            </ng-container>
-
-            <!-- Progress Column -->
-            <ng-container matColumnDef="worktitle">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                Work Title
-              </th>
-              <td mat-cell *matCellDef="let row">{{ row.worktitle }}</td>
-            </ng-container>
-
-            <!-- Progress Column -->
-            <ng-container matColumnDef="reg_no">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Reg No</th>
-              <td mat-cell *matCellDef="let row">{{ row.reg_no }}</td>
+              <td mat-cell *matCellDef="let row; let i = index">{{ i + 1 }}</td>
             </ng-container>
 
             <!-- Progress Column -->
@@ -254,15 +204,25 @@
               <td mat-cell *matCellDef="let row">{{ row.address }}</td>
             </ng-container>
 
+            <ng-container matColumnDef="mobile_phone">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
+              <td mat-cell *matCellDef="let row">{{ row.mobile_phone }}</td>
+            </ng-container>
+
             <!-- Progress Column -->
             <ng-container matColumnDef="action">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
               <td mat-cell *matCellDef="let row">
-                <button mat-icon-button color="primary">
-                  <mat-icon>edit</mat-icon>
+                <button mat-icon-button color="primary" matTooltip="Edit">
+                  <span class="bi bi-pen"></span>
                 </button>
-                <button mat-icon-button color="warn">
-                  <mat-icon>delete</mat-icon>
+                <button
+                  mat-icon-button
+                  color="warn"
+                  (click)="deleteLicensee(row.licensee_id)"
+                  matTooltip="Delete"
+                >
+                  <span class="bi bi-trash3"></span>
                 </button>
               </td>
             </ng-container>
