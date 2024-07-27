@@ -1,1 +1,40 @@
-<p>artwork works!</p>
+<div class="main-body">
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. sm">
+  </mat-form-field>
+  
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- Artwork Type Column -->
+      <ng-container matColumnDef="artworktype">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Artwork Type</th>
+        <td mat-cell *matCellDef="let row">{{ row.artworktype }}</td>
+      </ng-container> 
+       
+      <!-- Artwork Title Column -->
+      <ng-container matColumnDef="artworktitle">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Artwork Title</th>
+        <td mat-cell *matCellDef="let row">{{ row.artworktitle }}</td>
+      </ng-container> 
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button color="primary" matTooltip="Edit">
+            <span class="bi bi-pen"></span>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteArtwork(row.artwork_id)" matTooltip="Delete">
+            <span class="bi bi-trash3"></span>
+          </button>
+        </td>
+      </ng-container>   
+      
+      <!-- Header and Row Declarations -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

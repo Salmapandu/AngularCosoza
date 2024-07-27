@@ -19,6 +19,6 @@ export const appConfig: ApplicationConfig = {
       preventDuplicates: true,
       timeOut: 3000,
     }),
-    BrowserAnimationsModule,
+    BrowserAnimationsModule, provideAnimationsAsync(),
   ],
 };

@@ -6,3 +6,5 @@ export interface IPayment {
     date_paid: string;
     application?: IApplication | any;
 }
+
+

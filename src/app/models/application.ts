@@ -3,8 +3,9 @@ import { ILicense } from "./license";
 
 export interface IApplication {
     application_id: number;
-    date: string;
-    type: string;
+    application_date: string;
+    application_type: string;
     artist?: IArtist | any;
     licensee?: ILicense | any;
 }
+

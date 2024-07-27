@@ -6,9 +6,9 @@ import { ConfigurationComponent } from './pages/configuration/configuration.comp
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { LoginComponent } from './pages/login/login.component';
-import { UserListComponent } from './pages/user-list/user-list.component';
 import { UserManageComponent } from './pages/user-manage/user-manage.component';
 import { UserReportComponent } from './pages/user-report/user-report.component';
+import { TotalApplicationsComponent } from './total-applications/total-applications.component';
 
 export const routes: Routes = [
   {
@@ -33,6 +33,13 @@ export const routes: Routes = [
         path: 'dashboard',
         loadComponent: () => DashboardComponent,
       },
+
+      {
+        path: 'total-application',
+        loadComponent: () => TotalApplicationsComponent,
+      },
+
+  
       {
         path: 'user_report',
         loadComponent: () => UserReportComponent,
@@ -55,19 +62,9 @@ export const routes: Routes = [
       {
         path: 'artwork',
         loadComponent: () => ArtworkComponent,
-        title: 'ArtWorks'
+        title: 'ArtWorks',
       },
-      {
-        path: 'user-list',
-        loadComponent: () => UserListComponent,
-        children: [
-          {
-            path: '',
-            redirectTo: 'list-add-edit',
-            pathMatch: 'full',
-          },
-        ],
-      },
+      
 
       {
         path: 'list-add-edit',

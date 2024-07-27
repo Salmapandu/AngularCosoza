@@ -47,8 +47,8 @@ export class PageAddEditComponent implements OnInit {
 
   constructor(private _fb: FormBuilder, private toastr: ToastrService, private dialog: MatDialog) {
     this.empForm = this._fb.group({
-      firstName: '',
-      lastName: '',
+      firstname: '',
+      lastname: '',
       email: '',
       dob: '',
       gender: '',

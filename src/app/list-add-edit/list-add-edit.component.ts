@@ -51,8 +51,8 @@ export class ListAddEditComponent {
 
   constructor(private _fb: FormBuilder) {
     this.empForm = this._fb.group({
-      firstName: '',
-      lastName: '',
+      firstname: '',
+      lastname: '',
       email: '',
       dob: '',
       gender: '',
