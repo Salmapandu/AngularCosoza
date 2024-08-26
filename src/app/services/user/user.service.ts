@@ -5,13 +5,12 @@ import { environment } from '../../../environments/environment.development';
 import { IUser } from '../../models/user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
+  constructor() {}
 
-  constructor() { }
-
-  #apiUrl = environment.baseUrl + '/user'
+  #apiUrl = environment.baseUrl + '/user';
   #http = inject(HttpClient);
 
   getUsers(): Observable<IUser[]> {
@@ -27,10 +26,13 @@ export class UserService {
   }
 
   updateUser(formData: IUser, userId: number): Observable<IUser> {
-    return this.#http.put<IUser>(`${this.#apiUrl}/update/${userId}`, formData);
+    return this.#http.put<IUser>(
+      `${this.#apiUrl}/update/${userId}`,
+      formData
+    );
   }
 
-  getSpecificById(userId: number): Observable<any> {
-    return this.#http.get(`${this.#apiUrl}/getById/${userId}`);
+  getUserById(userId: number): Observable<IUser> {
+    return this.#http.get<IUser>(`${this.#apiUrl}/getById/${userId}`);
   }
 }

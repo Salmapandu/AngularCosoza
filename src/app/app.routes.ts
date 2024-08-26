@@ -9,6 +9,22 @@ import { LoginComponent } from './pages/login/login.component';
 import { UserManageComponent } from './pages/user-manage/user-manage.component';
 import { UserReportComponent } from './pages/user-report/user-report.component';
 import { TotalApplicationsComponent } from './total-applications/total-applications.component';
+import path from 'path';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { UserRegisterComponent } from './user-register/user-register.component';
+import { LicenseeService } from './services/licensee/licensee.service';
+import { WorkDeclarasionFormComponent } from './work-declarasion-form/work-declarasion-form.component';
+import { ViewPaymentComponent } from './view-payment/view-payment.component';
+import { MakePaymentComponent } from './make-payment/make-payment.component';
+import { ApplyForRegistrationComponent } from './apply-for-registration/apply-for-registration.component';
+import { ManageCertAndLicenseComponent } from './manage-cert-and-license/manage-cert-and-license.component';
+import { ApplicationFormComponent } from './application-form/application-form.component';
+import { ApplicationForm2Component } from './application-form2/application-form2.component';
+import { ContractComponent } from './contract/contract.component';
+import { ViewAllApplicationComponent } from './view-all-application/view-all-application.component';
+
+
+
 
 export const routes: Routes = [
   {
@@ -35,12 +51,16 @@ export const routes: Routes = [
       },
 
       {
-        path: 'total-application',
-        loadComponent: () => TotalApplicationsComponent,
+        path: 'view-all-application ',
+        loadComponent: () => ViewAllApplicationComponent,
       },
+
+      
 
   
       {
+
+        
         path: 'user_report',
         loadComponent: () => UserReportComponent,
       },
@@ -59,12 +79,27 @@ export const routes: Routes = [
         path: 'page-add-edit',
         loadComponent: () => PageAddEditComponent,
       },
+      
+      {
+        path: 'manage-cert-and-license',
+        loadComponent: () => ManageCertAndLicenseComponent,
+
+      },
+      
+
       {
         path: 'artwork',
         loadComponent: () => ArtworkComponent,
         title: 'ArtWorks',
       },
-      
+
+      {
+        path: 'view-payment',
+        loadComponent: () => ViewPaymentComponent,
+
+      },
+
+     
 
       {
         path: 'list-add-edit',
@@ -75,6 +110,61 @@ export const routes: Routes = [
         path: 'configuration',
         loadComponent: () => ConfigurationComponent,
       },
+
+      {
+        path: 'user-dashboard',
+        loadComponent: () => UserDashboardComponent,
+      },
+
+      {
+        path: 'contract',
+        loadComponent: () => ContractComponent,
+
+      },
+
+      {
+        path: 'apply-for-registration',
+        loadComponent: () => ApplyForRegistrationComponent,
+
+      },
+
+      {
+        path: 'make-payment',
+        loadComponent: () => MakePaymentComponent,
+
+      },
+      
+      
+     
+
+
+      {
+        path: 'work-declarasion-form',
+        loadComponent: () => WorkDeclarasionFormComponent,
+
+      },
+      {
+        path: 'application-form',
+        loadComponent: () => ApplicationFormComponent,
+
+      },
+
+      {
+        path: 'application-form2',
+        loadComponent: () => ApplicationForm2Component,
+
+      },
+
+      {
+        path: 'user-register',
+        loadComponent: () => UserRegisterComponent,
+      },
+      
+
+      
+
+
+      
     ],
   },
 ];

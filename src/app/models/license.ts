@@ -3,12 +3,10 @@ export interface ILicense {
     firstname: string;
     lastname: string;
     email: string;
-    date: string;
-    gender: string;
-    licensetype: string;
-    deviceused: string;
-    reg_no: string;
     address: string;
+    mobile_phone: string;
+    
+    
 }
 
 

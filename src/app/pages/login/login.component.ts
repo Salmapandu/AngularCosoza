@@ -1,15 +1,13 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
-
-import { ToastrModule } from 'ngx-toastr';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common'; // Import CommonModule
 
 @Component({
   selector: 'app-login',
@@ -23,12 +21,14 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    CommonModule, // Include CommonModule for ngIf
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   loginObj: Login;
+  errorMessage: string = ''; // Define the errorMessage property
 
   constructor(private http: HttpClient, private router: Router) {
     this.loginObj = new Login();
@@ -37,23 +37,27 @@ export class LoginComponent {
   #toastr = inject(ToastrService);
 
   onLogin() {
-    // display toastr
+    // Display toastr
     this.#toastr.success('Login Success', 'Success');
     this.router.navigate(['/app']);
     debugger;
     this.http
-      .post(
-        'https://freeapi.miniprojectideas.com/api/User/Login',
-        this.loginObj
-      )
+      .post('https://freeapi.miniprojectideas.com/api/User/Login', this.loginObj)
       .subscribe((res: any) => {
         if (res.result) {
           alert('Login Success');
           this.router.navigateByUrl('/dashboard');
         } else {
+          this.errorMessage = res.message; // Set error message if login fails
           alert(res.message);
         }
       });
+  }
+
+  onRegister() {
+    // Define the onRegister method
+    // Navigate to the registration page or handle registration logic
+    this.router.navigate(['/register']); // Update the path as needed
   }
 }
 

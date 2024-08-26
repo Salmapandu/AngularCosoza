@@ -1,0 +1,56 @@
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  flex: 1;
+  margin-right: 15px;
+}
+
+.form-group:last-child {
+  margin-right: 0;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+  width: 102%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.form-group .x {
+  margin-left: 5px;
+  color: red;
+  font-weight: bold;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-green {
+  padding: 18px 20px;
+  background-color: #28a745; /* Green color */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-green:hover {
+  background-color: #218838; /* Darker green on hover */
+}
