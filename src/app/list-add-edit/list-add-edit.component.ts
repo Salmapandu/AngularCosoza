@@ -46,20 +46,15 @@ import { MatOption } from '@angular/material/core';
 export class ListAddEditComponent {
   empForm: FormGroup;
 
-  licensetype: string[] = ['Radio Station', 'Hotel', 'Restaurant', 'Supermarket', 
-    'Shop', 'Saloon', 'Bus', 'Taxi Operator', 'Car Hire Operator', 'Other'];
+  // licensetype: string[] = ['Radio Station', 'Hotel', 'Restaurant', 'Supermarket', 
+  //   'Shop', 'Saloon', 'Bus', 'Taxi Operator', 'Car Hire Operator', 'Other'];
 
   constructor(private _fb: FormBuilder) {
     this.empForm = this._fb.group({
-      firstname: '',
-      lastname: '',
-      email: '',
-      dob: '',
-      gender: '',
-      licensetype: '',
-      deviceused: '',
-      reg_no: '',
+      name: '',
       address: '',
+      email: '',
+      phone: '',
     });
   }
 

@@ -41,21 +41,17 @@ import { ArtistService } from '../services/artist/artist.service';
 export class PageAddEditComponent implements OnInit {
   empForm: FormGroup;
 
-  worktype: string[] = ['Video', 'Audio'];
+  // worktype: string[] = ['Video', 'Audio'];
 
   private artistService = inject(ArtistService);
 
   constructor(private _fb: FormBuilder, private toastr: ToastrService, private dialog: MatDialog) {
     this.empForm = this._fb.group({
-      firstname: '',
-      lastname: '',
-      email: '',
-      dob: '',
-      gender: '',
-      worktype: '',
-      worktitle: '',
-      reg_no: '',
+      name: '',
       address: '',
+      email: '',
+      phone: '',
+      
     });
   }
 

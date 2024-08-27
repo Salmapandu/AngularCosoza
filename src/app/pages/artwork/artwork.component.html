@@ -7,17 +7,47 @@
   <div class="table-container">
     <table mat-table [dataSource]="dataSource" matSort>
 
-      <!-- Artwork Type Column -->
-      <ng-container matColumnDef="artworktype">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Artwork Type</th>
-        <td mat-cell *matCellDef="let row">{{ row.artworktype }}</td>
-      </ng-container> 
-       
+      <!-- ID Column -->
+      <ng-container matColumnDef="s/n">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>S/N</th>
+        <td mat-cell *matCellDef="let row; let i = index">{{ i + 1 }}</td>
+      </ng-container>
+
       <!-- Artwork Title Column -->
       <ng-container matColumnDef="artworktitle">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Artwork Title</th>
         <td mat-cell *matCellDef="let row">{{ row.artworktitle }}</td>
       </ng-container> 
+
+      <!-- Artwork Type Column -->
+      <ng-container matColumnDef="artworktype">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Artwork Type</th>
+        <td mat-cell *matCellDef="let row">{{ row.artworktype }}</td>
+      </ng-container>
+
+      <!-- Type of Right Column -->
+      <ng-container matColumnDef="typeofright">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Type of Right</th>
+        <td mat-cell *matCellDef="let row">{{ row.typeofright }}</td>
+      </ng-container>
+
+      <!-- Right Holder Name Column -->
+      <ng-container matColumnDef="rightholdername">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Right Holder Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.rightholdername }}</td>
+      </ng-container> 
+
+      <!-- Date of Birth Column -->
+      <ng-container matColumnDef="dob">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date of Birth</th>
+        <td mat-cell *matCellDef="let row">{{ row.dob }}</td>
+      </ng-container>
+
+      <!-- Work Mode Column -->
+      <ng-container matColumnDef="workmode">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Work Mode</th>
+        <td mat-cell *matCellDef="let row">{{ row.workmode }}</td>
+      </ng-container>
 
       <!-- Action Column -->
       <ng-container matColumnDef="action">

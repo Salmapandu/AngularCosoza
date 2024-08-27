@@ -1,0 +1,84 @@
+.container {
+    display: flex;
+  }
+  
+  .content {
+    width: 80%;
+    padding: 20px;
+  }
+  
+  .header h2 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+  
+  .header p {
+    margin-top: 5px;
+    font-size: 1em;
+    color: #666;
+  }
+  
+  .Artist and Licensee-application {
+    background-color: #e6f7ff;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .Artist and Licensee-application h3 {
+    margin-top: 0;
+    color: #007bff;
+  }
+  
+  .Artist and Licensee-application p {
+    margin: 10px 0;
+    color: #666;
+  }
+  
+  .Artist and Licensee-application a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .artist-type {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .artist {
+    width: 45%;
+    text-align: center;
+  }
+  
+  .artist h3 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .licensee p {
+    font-size: 0.9em;
+    color: #666;
+  }
+  
+  .artist button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #007bff;
+    border: 1px solid #007bff;
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .licensee button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #007bff;
+    border: 1px solid #007bff;
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+ 
+  

@@ -18,24 +18,48 @@
             <li class="sidebar-header" *ngIf="role?.role === 'ADMIN'">
                 Managament
             </li>
-            <li class="sidebar-item" routerLinkActive="active" *ngIf="role?.role === 'ADMIN'">
+
+
+             <li class="sidebar-item" routerLinkActive="active" *ngIf="role?.role === 'ADMIN'">
                 <a class="sidebar-link" routerLink="/app/user-manage">
-                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">User Managament</span>
+                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Registered Users</span>
                 </a>
             </li>
 
-            <li class="sidebar-header" *ngIf="role?.role === 'ADMIN'">
+            <li class="sidebar-item" routerLinkActive="active">
+                <a class="sidebar-link" routerLink="/app/manage-cert-and-license">
+                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Manage Cert and License</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item" routerLinkActive="active">
+                <a class="sidebar-link" routerLink="/app/view-all-application">
+                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">View all application</span>
+                </a>
+            </li>
+
+
+
+
+
+
+            <li class="sidebar-header">
                 Other
             </li>
 
-            <li class="sidebar-item" routerLinkActive="active" *ngIf="role?.role === 'ADMIN'">
+            <li class="sidebar-item" routerLinkActive="active">
                 <a class="sidebar-link" routerLink="/app/artwork">
-                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">ArtWork</span>
+                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">View ArtWorks</span>
                 </a>
             </li>
 
+            <li class="sidebar-item" routerLinkActive="active">
+                <a class="sidebar-link" routerLink="/app/view-payment">
+                    <i class="align-middle" data-feather="payment"></i> <span class="align-middle">View-Payment</span>
+                </a>
+            </li>
 
-            <li class="sidebar-item" routerLinkActive="active" *ngIf="role?.role === 'ADMIN'">
+            <li class="sidebar-item" routerLinkActive="active">
                 <a class="sidebar-link" routerLink="/app/configuration">
                     <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Configurations</span>
                 </a>

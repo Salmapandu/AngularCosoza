@@ -56,10 +56,11 @@ import { Subscription } from 'rxjs';
   styleUrl: './artwork.component.css'
 })
 export class ArtworkComponent implements OnInit {
-  displayedColumns: string[] = ['artworktype', 'artworktitle', 'action'];
+  displayedColumns: string[] = [ 's/n','artworktitle', 'artworktype', 
+    'typeofright', 'rightholdername', 'dob', 'workmode', 'action'];
  
+  
 
- 
  
   dataSource!: MatTableDataSource<any>;
  
@@ -118,3 +119,6 @@ export class ArtworkComponent implements OnInit {
     this.artworkSub?.unsubscribe();
   }
 }
+
+
+

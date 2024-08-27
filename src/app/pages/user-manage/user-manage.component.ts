@@ -45,26 +45,18 @@ export class UserManageComponent implements OnInit, OnDestroy {
     'firstname',
     'lastname',
     'email',
-    'dob',
-    'gender',
-    'worktype',
-    'worktitle',
-    'reg_no',
     'address',
+   'mobile_phone',    
     'action',
   ];
 
   displayedColumns2: string[] = [
-    's/n',
+   's/n',
     'firstname',
-    'lastname',    
+    'lastname',
     'email',
-    'dob',
-    'gender',
-    'licensetype',
-    'deviceused',
-    'reg_no',
     'address',
+   'mobile_phone',    
     'action',
   ];
 

@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
@@ -32,9 +33,10 @@ import { JwtSessionsService } from '../../services/jwt-sessions.service';
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    CommonModule, // Include CommonModule for ngIf
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   get er() {

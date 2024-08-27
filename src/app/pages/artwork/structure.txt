@@ -1,0 +1,177 @@
+s:/SYSTEM_PM/Cosoza/cosozaAngular/AngularCosoza/
+  ├─ .angular/
+  │  └─]cache/ (ignored)
+  ├─ .vscode/
+  │  ├─]extensions.json (ignored)
+  │  ├─]launch.json (ignored)
+  │  └─]tasks.json (ignored)
+  ├─]node_modules/ (ignored)
+  ├─ src/
+  │  ├─ app/
+  │  │  ├─ certificate-management/
+  │  │  │  ├─ certificate-management.component.css
+  │  │  │  ├─ certificate-management.component.html
+  │  │  │  ├─ certificate-management.component.spec.ts
+  │  │  │  └─ certificate-management.component.ts
+  │  │  ├─ fonts/
+  │  │  │  └─ .gitkeep
+  │  │  ├─ list-add-edit/
+  │  │  │  ├─ list-add-edit.component.css
+  │  │  │  ├─ list-add-edit.component.html
+  │  │  │  ├─ list-add-edit.component.spec.ts
+  │  │  │  └─ list-add-edit.component.ts
+  │  │  ├─ models/
+  │  │  │  ├─ application.ts
+  │  │  │  ├─ artist.ts
+  │  │  │  ├─ artwork.ts
+  │  │  │  ├─ license.ts
+  │  │  │  ├─ payment.ts
+  │  │  │  ├─ staff.ts
+  │  │  │  └─ user.ts
+  │  │  ├─ page-add-edit/
+  │  │  │  ├─ page-add-edit.component.css
+  │  │  │  ├─ page-add-edit.component.html
+  │  │  │  ├─ page-add-edit.component.spec.ts
+  │  │  │  └─ page-add-edit.component.ts
+  │  │  ├─ pages/
+  │  │  │  ├─ artwork/
+  │  │  │  │  ├─ artwork.component.css
+  │  │  │  │  ├─ artwork.component.html
+  │  │  │  │  ├─ artwork.component.spec.ts
+  │  │  │  │  └─ artwork.component.ts
+  │  │  │  ├─ configuration/
+  │  │  │  │  ├─ configuration.component.css
+  │  │  │  │  ├─ configuration.component.html
+  │  │  │  │  ├─ configuration.component.spec.ts
+  │  │  │  │  └─ configuration.component.ts
+  │  │  │  ├─ dashboard/
+  │  │  │  │  ├─ dashboard.component.css
+  │  │  │  │  ├─ dashboard.component.html
+  │  │  │  │  ├─ dashboard.component.spec.ts
+  │  │  │  │  └─ dashboard.component.ts
+  │  │  │  ├─ layout/
+  │  │  │  │  ├─ layout.component.css
+  │  │  │  │  ├─ layout.component.html
+  │  │  │  │  └─ layout.component.ts
+  │  │  │  ├─ login/
+  │  │  │  │  ├─ assets/
+  │  │  │  │  │  └─ img/
+  │  │  │  │  │     └─ photos/
+  │  │  │  │  │        └─ logo.jpg
+  │  │  │  │  ├─ login.component.css
+  │  │  │  │  ├─ login.component.html
+  │  │  │  │  └─ login.component.ts
+  │  │  │  ├─ user-manage/
+  │  │  │  │  ├─ user-manage.component.css
+  │  │  │  │  ├─ user-manage.component.html
+  │  │  │  │  ├─ user-manage.component.spec.ts
+  │  │  │  │  └─ user-manage.component.ts
+  │  │  │  └─ user-report/
+  │  │  │     ├─ user-report.component.css
+  │  │  │     ├─ user-report.component.html
+  │  │  │     ├─ user-report.component.spec.ts
+  │  │  │     └─ user-report.component.ts
+  │  │  ├─ resources/
+  │  │  │  ├─ footer/
+  │  │  │  │  ├─ footer.component.css
+  │  │  │  │  ├─ footer.component.html
+  │  │  │  │  ├─ footer.component.spec.ts
+  │  │  │  │  └─ footer.component.ts
+  │  │  │  ├─ sidenav/
+  │  │  │  │  ├─ sidenav.component.css
+  │  │  │  │  ├─ sidenav.component.html
+  │  │  │  │  ├─ sidenav.component.spec.ts
+  │  │  │  │  └─ sidenav.component.ts
+  │  │  │  └─ topnav/
+  │  │  │     ├─ topnav.component.css
+  │  │  │     ├─ topnav.component.html
+  │  │  │     ├─ topnav.component.spec.ts
+  │  │  │     └─ topnav.component.ts
+  │  │  ├─ services/
+  │  │  │  ├─ application/
+  │  │  │  │  ├─ application.service.spec.ts
+  │  │  │  │  └─ application.service.ts
+  │  │  │  ├─ artist/
+  │  │  │  │  ├─ artist.service.spec.ts
+  │  │  │  │  └─ artist.service.ts
+  │  │  │  ├─ artwork/
+  │  │  │  │  ├─ artwork.service.spec.ts
+  │  │  │  │  └─ artwork.service.ts
+  │  │  │  ├─ auth/
+  │  │  │  │  ├─ services.service.spec.ts
+  │  │  │  │  └─ services.service.ts
+  │  │  │  ├─ licensee/
+  │  │  │  │  ├─ licensee.service.spec.ts
+  │  │  │  │  └─ licensee.service.ts
+  │  │  │  ├─ payment/
+  │  │  │  │  ├─ payment.service.spec.ts
+  │  │  │  │  └─ payment.service.ts
+  │  │  │  ├─ staff/
+  │  │  │  │  ├─ staff.service.spec.ts
+  │  │  │  │  └─ staff.service.ts
+  │  │  │  └─ user/
+  │  │  │     ├─ user.service.spec.ts
+  │  │  │     └─ user.service.ts
+  │  │  ├─ total-applications/
+  │  │  │  ├─ total-applications.component.css
+  │  │  │  ├─ total-applications.component.html
+  │  │  │  ├─ total-applications.component.spec.ts
+  │  │  │  └─ total-applications.component.ts
+  │  │  ├─ user-dashboard/
+  │  │  │  ├─ user-dashboard.component.css
+  │  │  │  ├─ user-dashboard.component.html
+  │  │  │  ├─ user-dashboard.component.spec.ts
+  │  │  │  └─ user-dashboard.component.ts
+  │  │  ├─ user-register/
+  │  │  │  ├─ user-register.component.css
+  │  │  │  ├─ user-register.component.html
+  │  │  │  ├─ user-register.component.spec.ts
+  │  │  │  └─ user-register.component.ts
+  │  │  ├─ app.component.css
+  │  │  ├─ app.component.html
+  │  │  ├─ app.component.spec.ts
+  │  │  ├─ app.component.ts
+  │  │  ├─ app.config.server.ts
+  │  │  ├─ app.config.ts
+  │  │  └─ app.routes.ts
+  │  ├─ assets/
+  │  │  ├─ css/
+  │  │  │  ├─ app.css
+  │  │  │  └─ app.css.map
+  │  │  ├─ img/
+  │  │  │  ├─ avatars/
+  │  │  │  │  ├─ avatar-2.jpg
+  │  │  │  │  ├─ avatar-3.jpg
+  │  │  │  │  ├─ avatar-4.jpg
+  │  │  │  │  ├─ avatar-5.jpg
+  │  │  │  │  └─ avatar.jpg
+  │  │  │  ├─ icons/
+  │  │  │  │  ├─ icon.png
+  │  │  │  │  └─ soz.jpg
+  │  │  │  └─ photos/
+  │  │  │     └─ logo.jpg
+  │  │  ├─ js/
+  │  │  │  ├─ app.js
+  │  │  │  ├─ app.js.LICENSE.txt
+  │  │  │  └─ app.js.map
+  │  │  └─ .gitkeep
+  │  ├─ environments/
+  │  │  ├─ environment.development.ts
+  │  │  └─ environment.ts
+  │  ├─ favicon.ico
+  │  ├─ index.html
+  │  ├─ main.server.ts
+  │  ├─ main.ts
+  │  └─ styles.css
+  ├─ .editorconfig
+  ├─ .gitignore
+  ├─ angular.json
+  ├─ db.json
+  ├─ ng
+  ├─ package-lock.json
+  ├─ package.json
+  ├─ README.md
+  ├─ server.ts
+  ├─ tsconfig.app.json
+  ├─ tsconfig.json
+  └─ tsconfig.spec.json
