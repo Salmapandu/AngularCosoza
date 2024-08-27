@@ -79,15 +79,19 @@ export class LoginComponent {
     this.inProgress = true;
     this.authService.signin(this.form.value).subscribe({
       next: (data: any) => {
-        if (data.jwtToken) {
+        if (data.token) {
           // this.notify.showSuccess("Please wait, you will be redirected automatically.", "Logged in successfully.");
-          this.token.saveToken(data.jwtToken);
+          this.token.saveToken(data.token);
           this.#toastr.success('Login Success', 'Success');
           this.router.navigate(['/app']).then(() => {
             // window.location.reload();
           });
         } else {
           // this.notify.showError("Please, recheck your username and password.", "Login failled.");
+          this.#toastr.error('Login Error', 'Error');
+          console.log("data:", data);
+
+
         }
         this.inProgress = false;
       },
