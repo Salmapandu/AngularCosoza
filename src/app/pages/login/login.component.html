@@ -6,7 +6,12 @@
   <div class="container">
     <mat-card class="form-container">
       <h2 class="form-title">LOGIN</h2>
-      <form>
+      <form
+        [formGroup]="form"
+        (ngSubmit)="f.form.valid && login()"
+        #f="ngForm"
+        novalidate
+      >
         <div style="text-align: center">
           <img src="assets/img/photos/logo.jpg" class="login-logo" />
         </div>
@@ -18,7 +23,13 @@
             style="width: 100%"
           >
             <mat-label for="email">Email:</mat-label>
-            <input matInput type="email" id="email" name="email" required />
+            <input
+              matInput
+              type="email"
+              id="email"
+              formControlName="email"
+              required
+            />
           </mat-form-field>
         </div>
 
@@ -33,19 +44,18 @@
               matInput
               type="text"
               id="password"
-              name="password"
+              formControlName="password"
               required
             />
           </mat-form-field>
         </div>
         <button
           mat-raised-button
-          type="button"
+          type="submit"
           style="background-color: #009688; color: #fff; width: 100%"
           class="btn"
-          (click)="onLogin()"
         >
-            <span class="fa fa-sign-in"></span>
+          <span class="fa fa-sign-in"></span>
           Login
         </button>
       </form>

@@ -59,7 +59,6 @@ export class PageAddEditComponent implements OnInit {
     });
   }
 
-
   onFormSubmit() {
     if (this.empForm.valid) {
       this.artistService.addArtist(this.empForm.value).subscribe({
@@ -76,6 +75,6 @@ export class PageAddEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      
+
   }
 }
