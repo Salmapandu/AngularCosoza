@@ -1,6 +1,12 @@
 import { HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -9,7 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from '../../services/auth/auth.service';
 import { JwtSessionsService } from '../../services/jwt-sessions.service';
@@ -67,26 +73,30 @@ export class LoginComponent {
   }
 
   login() {
+    console.log(this.form.value);
+
     this.token.logout();
     this.inProgress = true;
-    this.authService.signin(this.form.value).subscribe(
-      (data: any) => {
+    this.authService.signin(this.form.value).subscribe({
+      next: (data: any) => {
         if (data.jwtToken) {
           // this.notify.showSuccess("Please wait, you will be redirected automatically.", "Logged in successfully.");
           this.token.saveToken(data.jwtToken);
-          this.router.navigate(['home']).then(() => {
-            window.location.reload();
+          this.#toastr.success('Login Success', 'Success');
+          this.router.navigate(['/app']).then(() => {
+            // window.location.reload();
           });
         } else {
           // this.notify.showError("Please, recheck your username and password.", "Login failled.");
         }
         this.inProgress = false;
       },
-      (error) => {
+      error: (error) => {
         // this.notify.showError("Wrong username or password", "Login failled.");
+        this.#toastr.error('Login Error', 'Error');
         this.inProgress = false;
-      }
-    );
+      },
+    });
   }
   // loginObj: Login;
 
@@ -94,7 +104,7 @@ export class LoginComponent {
   //   this.loginObj = new Login();
   // }
 
-  // #toastr = inject(ToastrService);
+  #toastr = inject(ToastrService);
 
   // onLogin() {
   //   // display toastr
