@@ -8,6 +8,7 @@ import { LayoutComponent } from './pages/layout/layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { UserManageComponent } from './pages/user-manage/user-manage.component';
 import { UserReportComponent } from './pages/user-report/user-report.component';
+import { AuthGuard } from './services/auth.guard';
 import { TotalApplicationsComponent } from './total-applications/total-applications.component';
 
 export const routes: Routes = [
@@ -23,6 +24,7 @@ export const routes: Routes = [
   {
     path: 'app',
     component: LayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -39,7 +41,7 @@ export const routes: Routes = [
         loadComponent: () => TotalApplicationsComponent,
       },
 
-  
+
       {
         path: 'user_report',
         loadComponent: () => UserReportComponent,
@@ -64,7 +66,7 @@ export const routes: Routes = [
         loadComponent: () => ArtworkComponent,
         title: 'ArtWorks',
       },
-      
+
 
       {
         path: 'list-add-edit',

@@ -5,53 +5,53 @@
         </a>
 
         <ul class="sidebar-nav">
-            <li class="sidebar-header">
+            <li class="sidebar-header" *ngIf="role?.role === 'ADMIN'">
                 Home
             </li>
 
-            <li class="sidebar-item" routerLinkActive="active">
+            <li class="sidebar-item" routerLinkActive="active" *ngIf="role?.role === 'ADMIN'">
                 <a class="sidebar-link" routerLink="/app/dashboard">
                     <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>
 
-            <li class="sidebar-header">
+            <li class="sidebar-header" *ngIf="role?.role === 'ADMIN'">
                 Managament
             </li>
-            <li class="sidebar-item" routerLinkActive="active">
+            <li class="sidebar-item" routerLinkActive="active" *ngIf="role?.role === 'ADMIN'">
                 <a class="sidebar-link" routerLink="/app/user-manage">
                     <i class="align-middle" data-feather="users"></i> <span class="align-middle">User Managament</span>
                 </a>
             </li>
 
-            <li class="sidebar-header">
+            <li class="sidebar-header" *ngIf="role?.role === 'ADMIN'">
                 Other
             </li>
-            
-            <li class="sidebar-item" routerLinkActive="active">
+
+            <li class="sidebar-item" routerLinkActive="active" *ngIf="role?.role === 'ADMIN'">
                 <a class="sidebar-link" routerLink="/app/artwork">
                     <i class="align-middle" data-feather="users"></i> <span class="align-middle">ArtWork</span>
                 </a>
             </li>
 
 
-            <li class="sidebar-item" routerLinkActive="active">
+            <li class="sidebar-item" routerLinkActive="active" *ngIf="role?.role === 'ADMIN'">
                 <a class="sidebar-link" routerLink="/app/configuration">
                     <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Configurations</span>
                 </a>
             </li>
 
-            <li class="sidebar-header">
+            <li class="sidebar-header" *ngIf="role?.role === 'ADMIN'">
                 Reports
             </li>
-            <li class="sidebar-item" routerLinkActive="active">
+            <li class="sidebar-item" routerLinkActive="active" *ngIf="role?.role === 'ADMIN'">
                 <a class="sidebar-link" routerLink="/app/pages-sign-in.html">
                     <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">Reports</span>
                 </a>
             </li>
 
-            <li class="sidebar-header">
-            
+            <!-- <li class="sidebar-header"> -->
+
 
         </ul>
     </div>
