@@ -20,6 +20,8 @@ import { UserRegisterComponent } from './user-register/user-register.component';
 import { ViewAllApplicationComponent } from './view-all-application/view-all-application.component';
 import { ViewPaymentComponent } from './view-payment/view-payment.component';
 import { WorkDeclarasionFormComponent } from './work-declarasion-form/work-declarasion-form.component';
+import { UserSidenavComponent } from './user-sidenav/user-sidenav.component';
+import { UserLayoutComponent } from './user-layout/user-layout.component';
 
 export const routes: Routes = [
   {
@@ -30,6 +32,53 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'user-register',
+    loadComponent: () => UserRegisterComponent,
+  },
+  {
+    path: 'user',
+    loadComponent: () => UserLayoutComponent,
+    canActivate:[AuthGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: 'user-dashboard',
+        pathMatch: 'full',
+      },
+      {
+        path: 'user-dashboard',
+        loadComponent: () => UserDashboardComponent,
+      },
+      {
+        path: 'application-form',
+        loadComponent: () => ApplicationFormComponent,
+      },
+
+      {
+        path: 'apply-for-registration',
+        loadComponent: () => ApplyForRegistrationComponent
+      },
+      {
+        path: 'application-form2',
+        loadComponent: () => ApplicationForm2Component,
+      },
+      {
+        path: 'work-declarasion-form',
+        loadComponent: () => WorkDeclarasionFormComponent,
+      },
+      {
+        path: 'contract',
+        loadComponent: () => ContractComponent
+      },
+      {
+        path: 'make-payment',
+        loadComponent: () => MakePaymentComponent,
+      },
+
+    ]
+
   },
   {
     path: 'app',
@@ -96,25 +145,9 @@ export const routes: Routes = [
         path: 'configuration',
         loadComponent: () => ConfigurationComponent,
       },
-
-      {
-        path: 'user-dashboard',
-        loadComponent: () => UserDashboardComponent,
-      },
-
       {
         path: 'contract',
         loadComponent: () => ContractComponent,
-      },
-
-      {
-        path: 'apply-for-registration',
-        loadComponent: () => ApplyForRegistrationComponent,
-      },
-
-      {
-        path: 'make-payment',
-        loadComponent: () => MakePaymentComponent,
       },
 
       {
@@ -122,19 +155,14 @@ export const routes: Routes = [
         loadComponent: () => WorkDeclarasionFormComponent,
       },
       {
-        path: 'application-form',
-        loadComponent: () => ApplicationFormComponent,
-      },
-
-      {
         path: 'application-form2',
         loadComponent: () => ApplicationForm2Component,
       },
-
-      {
-        path: 'user-register',
-        loadComponent: () => UserRegisterComponent,
-      },
+ 
     ],
   },
+  {
+    path: '**',
+    redirectTo: 'login',
+  }
 ];

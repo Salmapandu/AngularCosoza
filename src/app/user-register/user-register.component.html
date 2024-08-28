@@ -1,47 +1,71 @@
 <div class="register-container">
-    <mat-card class="register-card">
-      <h2 class="register-title">User Registration</h2>
-      <form (ngSubmit)="onRegister()">
-        <div style="text-align: center">
-          <img src="assets/img/photos/logo.jpg" class="login-logo" />
-        </div>
+  <mat-card class="register-card">
+    <h2 class="register-title">User Registration</h2>
+    <form (ngSubmit)="onRegister()">
+      <div style="text-align: center">
+        <img src="assets/img/photos/logo.jpg" class="login-logo" />
+      </div>
 
+      <div class="form-row">
         <!-- Name -->
         <mat-form-field class="form-field" appearance="outline">
-          <mat-label for="name">Name</mat-label>
-          <input matInput type="text" id="name" name="name" [(ngModel)]="registerObj.Name" required />
+          <mat-label for="fname">First Name</mat-label>
+          <input matInput type="text" id="fname" name="fname" [(ngModel)]="registerObj.firstname" required />
         </mat-form-field>
-  
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label for="lname">Last Name</mat-label>
+          <input matInput type="text" id="lname" name="lname" [(ngModel)]="registerObj.lastname" required />
+        </mat-form-field>
+
         <!-- Address -->
         <mat-form-field class="form-field" appearance="outline">
           <mat-label for="address">Address</mat-label>
-          <textarea matInput id="address" name="address" [(ngModel)]="registerObj.Address" required></textarea>
+          <textarea matInput id="address" name="address" [(ngModel)]="registerObj.address" required></textarea>
         </mat-form-field>
-  
+      </div>
+
+      <div class="form-row">
         <!-- Email -->
         <mat-form-field class="form-field" appearance="outline">
           <mat-label for="email">Email</mat-label>
-          <input matInput type="email" id="email" name="email" [(ngModel)]="registerObj.Email" required />
+          <input matInput type="email" id="email" name="email" [(ngModel)]="registerObj.email" required />
         </mat-form-field>
-  
+
         <!-- Phone -->
         <mat-form-field class="form-field" appearance="outline">
           <mat-label for="phone">Phone</mat-label>
-          <input matInput type="tel" id="phone" name="phone" [(ngModel)]="registerObj.Phone" required />
+          <input matInput type="tel" id="phone" name="phone" [(ngModel)]="registerObj.mobile_phone" required />
         </mat-form-field>
-  
-        <!-- Submit Button -->
-        <button mat-raised-button type="submit" style="background-color: #009688; color: #fff; width: 100%" class="btn">
-          <span class="fa fa-sign-in"></span>
-          Register
-        </button>
+      </div>
 
-  
-        <!-- Error Message -->
-        <div *ngIf="errorMessage" style="color: red; text-align: center; margin-top: 10px;">
-          {{ errorMessage }}
-        </div>
-      </form>
-    </mat-card>
-  </div>
-  
+      <div class="form-row">
+        <!-- Password -->
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label for="password">Password</mat-label>
+          <input matInput type="password" id="password" name="password" [(ngModel)]="registerObj.password" required />
+        </mat-form-field>
+
+        <!-- Role -->
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Registered as</mat-label>
+          <mat-select [(ngModel)]="registerObj.role" name="role" required>
+            <mat-option *ngFor="let role of roles" [value]="role">
+              {{ role }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Submit Button -->
+      <button mat-raised-button type="submit" class="btn">
+        <span class="fa fa-sign-in"></span>
+        Register
+      </button>
+
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </mat-card>
+</div>

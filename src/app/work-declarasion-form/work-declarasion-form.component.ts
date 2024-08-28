@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -13,6 +13,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 
@@ -39,10 +42,34 @@ import { Subscription } from 'rxjs';
     MatTooltipModule,
     MatSortHeader,
     MatTabsModule,
+    MatSelectModule,
+    MatCardModule,
+    MatToolbarModule
   ],
   templateUrl: './work-declarasion-form.component.html',
   styleUrl: './work-declarasion-form.component.css'
 })
 export class WorkDeclarasionFormComponent {
+  artistForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<WorkDeclarasionFormComponent>) {
+    this.artistForm = this.fb.group({
+      artworkTitle: [''],
+      artworkType: [''],
+      typeofrights: [''],
+      rightholdername: [''],
+      dob: [''],
+      workmode: ['']
+    });
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
+  }
+
+  generateControlNumber() {
+    // Implement control number generation logic here
+    console.log('Generating control number...');
+  }
 
 }

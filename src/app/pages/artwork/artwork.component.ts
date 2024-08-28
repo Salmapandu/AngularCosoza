@@ -55,61 +55,14 @@ import { Subscription } from 'rxjs';
   templateUrl: './artwork.component.html',
   styleUrl: './artwork.component.css'
 })
-export class ArtworkComponent implements OnInit {
-  displayedColumns: string[] = [ 's/n','artworktitle', 'artworktype', 
-    'typeofright', 'rightholdername', 'dob', 'workmode', 'action'];
- 
-  
-
- 
-  dataSource!: MatTableDataSource<any>;
- 
+export class ArtworkComponent implements OnInit, OnDestroy {
+  displayedColumns: string[] = ['s/n', 'artworktitle', 'artworktype', 'typeofright', 'rightholdername', 'dob', 'workmode', 'action'];
+  dataSource: MatTableDataSource<any> = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  private artworkSub?: Subscription;
 
-  artworkSub?: Subscription;
-
-  constructor(private _dialog: MatDialog, private toastr: ToastrService) {}
-  private artworkService = inject(ArtworkService);
- 
-
-  deleteArtwork(artworkId: any) {
-    this.artworkService.deleteArtwork(artworkId).subscribe({
-      next: (_res: any) => {
-        this.toastr.success('Artwork Permanently Deleted', 'Successfully');
-        this.getArtworks();
-      },
-      error: (err: any) => {
-        console.log(err);
-        // this.getArtwork();
-        this.toastr.error('Failed to Delete Artwork', 'Error');
-      },
-    });
-  }
-
-
-  
-  getArtworks(): void {
-    this.artworkSub = this.artworkService.getArtworks().subscribe({
-      next: (res: any[] | undefined) => {
-        console.log(res);
-        this.dataSource = new MatTableDataSource(res);
-      },
-      error: (err: any) => {
-        console.log(err);
-      },
-    });
-  }
-
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource!.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource!.paginator) {
-      this.dataSource!.paginator.firstPage();
-    }
-  }
+  constructor(private artworkService: ArtworkService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.getArtworks();
@@ -118,7 +71,42 @@ export class ArtworkComponent implements OnInit {
   ngOnDestroy(): void {
     this.artworkSub?.unsubscribe();
   }
+
+  getArtworks(): void {
+    this.artworkSub = this.artworkService.getArtworks().subscribe({
+      next: (res: any[]) => {
+        this.dataSource.data = res;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+      error: (err: any) => {
+        this.toastr.error('Failed to load artworks', 'Error');
+      }
+    });
+  }
+
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  deleteArtwork(id: number): void {
+    this.artworkService.deleteArtwork(id).subscribe({
+      next: () => {
+        this.toastr.success('Artwork deleted successfully', 'Success');
+        this.getArtworks();
+      },
+      error: () => {
+        this.toastr.error('Failed to delete artwork', 'Error');
+      }
+    });
+  }
+
+  editArtWork(id: number): void {
+    // Implement the logic for editing artwork
+  }
 }
-
-
 

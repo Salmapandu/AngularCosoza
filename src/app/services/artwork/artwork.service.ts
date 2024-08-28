@@ -8,12 +8,13 @@ import { Artwork } from '../../models/artwork';
   providedIn: 'root'
 })
 export class ArtworkService {
-  #apiUrl = environment.baseUrl + '/artwork';
+  // Sasisha apiUrl na "api/v1/artwork"
+  #apiUrl = `${environment.baseUrl}/api/v1/artwork`;
   
   constructor(private http: HttpClient) {}
 
   deleteArtwork(artworkId: number): Observable<void> {
-    return this.http.delete<void>(`${this.#apiUrl}/${artworkId}`);
+    return this.http.delete<void>(`${this.#apiUrl}/delete/${artworkId}`);
   }
 
   getArtworks(): Observable<Artwork[]> {
@@ -28,7 +29,7 @@ export class ArtworkService {
     return this.http.put<Artwork>(`${this.#apiUrl}/update/${artworkId}`, formData);
   }
 
-  getSpecificById(artworkId: number): Observable<any> {
-    return this.http.get(`${this.#apiUrl}/getById/${artworkId}`);
+  getSpecificById(artworkId: number): Observable<Artwork> {
+    return this.http.get<Artwork>(`${this.#apiUrl}/getById/${artworkId}`);
   }
 }

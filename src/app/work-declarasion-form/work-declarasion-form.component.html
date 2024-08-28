@@ -1,55 +1,61 @@
-<div class="container">
-  <h1>keep your artwork information carefully. make sure you have filled every space that you have been assigned</h1>
-  
+<!-- artist-form.component.html -->
+<mat-card class="form-container">
+  <mat-toolbar color="primary">
+    <span>Artist Registration Form</span>
+    <button mat-icon-button (click)="closeDialog()" style="margin-left: auto;">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar>
 
-<div class="form-container">
-  <div class="form-row">
-    <div class="form-group">
-      <label for="artworkTitle">Artwork Title</label>
-      <input type="text" id="artworkTitle" name="artworkTitle" placeholder="Please Enter Your Artwork Title">
+  <form [formGroup]="artistForm" class="form-content">
+    <div class="form-row">
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Artwork Title</mat-label>
+        <input matInput formControlName="artworkTitle" placeholder="Please Enter Your Artwork Title">
+      </mat-form-field>
+
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Artwork Type</mat-label>
+        <input matInput formControlName="artworkType" placeholder="Please Enter Your Artwork Type">
+      </mat-form-field>
     </div>
 
-    <div class="form-group">
-      <label for="artworkType">Artwork Type</label>
-      <input type="text" id="artworkType" name="artworkType" placeholder="Please Enter Your Artwork Type">
-    </div>
-  </div>
+    <div class="form-row">
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Type of Rights</mat-label>
+        <mat-select formControlName="typeofrights">
+          <mat-option value="C-Composer">C-Composer</mat-option>
+          <mat-option value="A-Author/Lyricist">A-Author/Lyricist</mat-option>
+          <mat-option value="AR-Arranger">AR-Arranger</mat-option>
+          <mat-option value="E-Publisher">E-Publisher</mat-option>
+          <mat-option value="Producer">Producer</mat-option>
+          <mat-option value="Performer">Performer</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-  <div class="form-row">
-    <div class="form-group">
-      <label for="typeofrights">Type of Rights </label>
-      <select id="typeofrights" name="typeofrights">
-        <option value="C-Composer">C-Composer</option>
-        <option value="A-Author/Lyricist">A-Author/Lyricist</option>
-        <option value="AR-Arranger">AR-Arranger</option>
-        <option value="E-Publisher">E-Publisher</option>
-        <option value="Producer">Producer</option>
-        <option value="Performer">Performer</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="rightholdername">Right Holder Name</label>
-      <input type="text" id="rightholdername" name="rightholdername" placeholder="Please Enter Your Right Holder Name">
-    </div>
-  </div>
-
-  <div class="form-row">
-    <div class="form-group">
-      <label for="dob">Date of Birth</label>
-      <input type="date" id="dob" name="dob">
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Right Holder Name</mat-label>
+        <input matInput formControlName="rightholdername" placeholder="Please Enter Your Right Holder Name">
+      </mat-form-field>
     </div>
 
-    <div class="form-group">
-      <label for="workmode">Work Mode</label>
-      <select id="workmode" name="workmode">
-        <option value="Groups">Groups</option>
-        <option value="Individual">Individual</option>
-      </select>
-    </div>
-  </div>
+    <div class="form-row">
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput type="date" formControlName="dob">
+      </mat-form-field>
 
-  <div class="button-container">
-    <button type="button" class="btn-green">Generate Control Number</button>
-  </div>
-</div>
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Work Mode</mat-label>
+        <mat-select formControlName="workmode">
+          <mat-option value="Groups">Groups</mat-option>
+          <mat-option value="Individual">Individual</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" (click)="generateControlNumber()">Submit</button>
+    </div>
+  </form>
+</mat-card>

@@ -10,8 +10,10 @@ import { IUser } from '../../models/user';
 export class UserService {
   constructor() {}
 
-  #apiUrl = environment.baseUrl + '/user';
+  #apiUrl = environment.baseUrl + 'user';
   #http = inject(HttpClient);
+
+ 
 
   getUsers(): Observable<IUser[]> {
     return this.#http.get<IUser[]>(`${this.#apiUrl}/get/users`);

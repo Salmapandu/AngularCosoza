@@ -10,7 +10,7 @@ import { IArtist } from '../../models/artist';
 export class ArtistService {
   constructor() {}
 
-  #apiUrl = environment.baseUrl + '/artist';
+  #apiUrl = environment.baseUrl + 'artist';
   #http = inject(HttpClient);
 
   getArtists(): Observable<IArtist[]> {

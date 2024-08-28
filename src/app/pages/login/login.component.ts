@@ -39,6 +39,7 @@ import { JwtSessionsService } from '../../services/jwt-sessions.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+
   get er() {
     return this.form.controls;
   }
@@ -73,34 +74,28 @@ export class LoginComponent {
   toggleShowPassword() {
     this.showPasswordSubject.next(!this.showPasswordSubject.value);
   }
+  onRegister() {
+    this.router.navigate(['/user-register']);
+  }
 
   login() {
     console.log(this.form.value);
 
     this.token.logout();
     this.inProgress = true;
-    this.authService.signin(this.form.value).subscribe({
+    this.authService.login(this.form.value).subscribe({
       next: (data: any) => {
         if (data.token) {
-          // this.notify.showSuccess("Please wait, you will be redirected automatically.", "Logged in successfully.");
           this.token.saveToken(data.token);
           this.#toastr.success('Login Success', 'Success');
-          this.router.navigate(['/app']).then(() => {
-            // window.location.reload();
-          });
         } else {
-          // this.notify.showError("Please, recheck your username and password.", "Login failled.");
-          this.#toastr.error('Login Error', 'Error');
-          console.log("data:", data);
-
-
+          // this.#toastr.error('Login Error', 'Error');
+          // console.log("data:", data);
         }
         this.inProgress = false;
       },
       error: (error) => {
-        // this.notify.showError("Wrong username or password", "Login failled.");
-        this.#toastr.error('Login Error', 'Error');
-        this.inProgress = false;
+     
       },
     });
   }

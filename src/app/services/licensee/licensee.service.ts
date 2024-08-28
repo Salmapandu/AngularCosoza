@@ -10,7 +10,7 @@ import { ILicense } from '../../models/license';
 export class LicenseeService {
   constructor() {}
 
-  #apiUrl = environment.baseUrl + '/licensee';
+  #apiUrl = environment.baseUrl + 'licensee';
   #http = inject(HttpClient);
 
   getLicensees(): Observable<ILicense[]> {

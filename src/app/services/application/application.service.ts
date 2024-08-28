@@ -11,7 +11,7 @@ export class ApplicationService {
 
   constructor() { }
 
-  #apiUrl = environment.baseUrl + '/application'
+  #apiUrl = environment.baseUrl + 'application'
   #http = inject(HttpClient);
 
   getApplications(): Observable<IApplication[]> {

@@ -10,6 +10,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthService } from '../services/auth/auth.service';
+import { MatSelect, MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-user-register',
@@ -24,6 +26,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    MatSelectModule,
+    
   ],
   templateUrl: './user-register.component.html',
   styleUrl: './user-register.component.css'
@@ -32,21 +36,36 @@ export class UserRegisterComponent {
 
   // Define registerObj with initial values
   registerObj = {
-    Name: '',
-    Address: '',
-    Email: '',
-    Phone: ''
+   firstname:"",
+   lastname:"",
+   email:"",
+   address: "",
+   mobile_phone: "",
+   password:"",
+   role:""
   };
 
-  // Define errorMessage property
-  errorMessage: string = '';
+  roles = ['ARTIST','LICENSEE']; // Dropdown options
+  errorMessage: string | null = null;
 
-  // Method to handle registration
+  constructor(private router: Router, private registrationService: AuthService, private toastr: ToastrService) {}
+
   onRegister() {
-    // Implement your registration logic here
-    console.log('Registration attempted with:', this.registerObj);
+    this.registrationService.register(this.registerObj).subscribe({
+      next: (response) => {
+        // Handle success (e.g., navigate to a different page or show a success message)
+        this.toastr.success('Registraction Success', 'Success');
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        // Handle error (e.g., show error message)
+        this.errorMessage = 'Registration failed. Please try again.';
+        this.toastr.error(this.errorMessage, 'Error!');
 
-   
+      }
+    });
   }
 }
+
+ 
 
